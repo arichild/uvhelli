@@ -1,0 +1,23 @@
+.vacancy {
+  margin-bottom: 160px;
+
+  // .ui-title {
+  //   margin-bottom: 100px;
+  // }
+
+  &-form {
+    background: #333;
+    padding: 88px 50px 80px 50px;
+
+    .contacts-form-txt {
+      color: #D9D9D9;
+    }
+
+    &-title {
+      font-size: 36px;
+      color: #D9D9D9;
+      text-transform: uppercase;
+      margin-bottom: 65px;
+    }
+  }
+}

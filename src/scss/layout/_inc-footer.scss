@@ -1,0 +1,35 @@
+.footer {
+  padding: 60px 0;
+  border-top: 1px solid #292929;
+  &-content {
+    justify-content: space-between;
+    align-items: center;
+
+    &-img {
+      line-height: 0;
+      max-width: 270px;
+    }
+
+    &-txt {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        color: #fff;
+        font-size: 18px;
+        margin-right: 174px;
+        transition: color .1s ease-in;
+
+        &:hover {
+          color: #d9d9d9;
+        }
+      }
+    }
+
+    &-coopyright {
+      display: inline-block;
+      font-size: 18px;
+      text-transform: uppercase;
+    }
+  }
+}

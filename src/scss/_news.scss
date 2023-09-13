@@ -1,0 +1,11 @@
+.news-page {
+  &-content {
+    margin-bottom: 110px;
+    padding-bottom: 90px;
+    position: relative;
+
+    .ui-card {
+      margin-bottom: 90px;
+    }
+  }
+}

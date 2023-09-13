@@ -1,0 +1,21 @@
+.page-404 {
+  text-align: center;
+
+  &-img {
+    line-height: 0;
+    margin-bottom: 45px;
+  }
+
+  &-txt {
+    font-size: 20px;
+    color: #D9D9D9;
+    max-width: 740px;
+    margin: 0 auto;
+
+    a {
+      text-decoration-line: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+    }
+  }
+}

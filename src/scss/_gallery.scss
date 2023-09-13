@@ -1,0 +1,40 @@
+.gallery {
+  &-slider {
+    padding-bottom: 100px;
+    margin-bottom: 100px;
+    position: relative;
+
+    .splide__track {
+      margin-bottom: 75px;
+    }
+
+    .splide__arrows.splide__arrows--ltr {
+      max-width: 140px;
+      flex: 0 0 140px;
+    }
+
+    .splide__pagination {
+      position: static;
+      max-width: calc(100% - 140px);
+      flex: 0 0 calc(100% - 140px);
+    }
+
+    .splide__arrows.splide__arrows--ltr {
+      top: 0;
+    }
+  }
+
+  &-block {
+    position: relative;
+    padding-bottom: 145px;
+    margin-bottom: 130px;
+
+    &-content {
+      margin-bottom: 50px;
+
+      .ui-card {
+        margin-bottom: 70px;
+      }
+    }
+  }
+}

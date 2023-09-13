@@ -1,0 +1,155 @@
+.development {
+  position: relative;
+  padding-bottom: 120px;
+  margin-bottom: 120px;
+
+  &-head {
+    margin-bottom: 120px;
+
+    a {
+      font-size: 24px;
+      color: #D9D9D9;
+      text-transform: uppercase;
+      margin-right: 52px;
+      text-decoration: underline dotted;
+      text-underline-offset: 6px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-block {
+    color: #D9D9D9;
+    font-size: 18px;
+    padding: 58px 90px;
+    margin: 0 -90px;
+    background: radial-gradient(96.15% 96.15% at 50% 50%, #1D1D1D 0%, #000 100%);
+    position: relative;
+
+    &:first-child {
+      &::after {
+        content: "";
+        position: absolute;
+        left: -100%;
+        right: -100%;
+        top: 0;
+        height: 1px;
+        background-color: #292929;
+        z-index: 0;
+      }
+    }
+
+    &-img {
+      text-align: center;
+    }
+
+    &-bottom {
+      a {
+        position: relative;
+        padding-left: 35px;
+        color: #606060;
+        font-size: 20px;
+
+        &::after {
+          content: '';
+          width: 6px;
+          height: 6px;
+          background-color: #606060;
+          margin: 0 16px;
+          display: inline-block;
+          border-radius: 50%;
+          position: relative;
+          top: -3px;
+        }
+
+        &:last-child {
+          &::after {
+            content: none;
+          }
+        }
+
+        span {
+          text-decoration-line: underline;
+          text-underline-offset: 4px;
+          text-decoration-thickness: 1px;
+          transition: color .1s ease;
+
+          &:hover {
+            color: #fff;
+          }
+        }
+
+        img {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translate(0, -50%);
+        }
+      }
+    }
+
+    &-content {
+      max-width: 800px;
+    }
+
+    &-list {
+      margin-bottom: 120px;
+    }
+
+    .row {
+      align-items: center;
+
+      &.reverse {
+        flex-direction: row-reverse
+      }
+    }
+
+    &-title {
+      font-size: 48px;
+      text-transform: uppercase;
+    }
+
+    &-txt {
+      // padding: 32px 0 53px 0;
+      margin-bottom: 30px;
+      min-height: 436px;
+      position: relative;
+
+      .line {
+        margin-top: 30px;
+        margin-bottom: 32px;
+        width: 116px;
+        height: 1px;
+        background: #D9D9D9;
+
+        &.bottom {
+          position: absolute;
+          bottom: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      p {
+        margin-bottom: 32px;
+      }
+
+      li {
+        position: relative;
+        padding-left: 12px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 12px;
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          background-color: #D9D9D9;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,196 @@
+<!--#include file="inc-header.html"-->
+
+<div class="middler" id="middle">
+  <div class="container">
+    <div class="page-wrapper">
+      <div class="news-page">
+        <div class="ui-title">Новости</div>
+
+        <div class="news-page-content ui-line">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ui-card">
+                <div class="ui-card-img">
+                  <a href="#" class="ui-card-source">
+                    <img class="img" src="./images/experience-slider-1.png" alt="alt">
+                  </a>
+                </div>
+
+                <div class="ui-card-txt">
+                  <a href="#" class="ui-card-title">Камера сгорания двигателя М8000-нтг успешно прошла финальные испытания.</a>
+
+                  <a href="#" class="ui-card-link">Читать новость</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="ui-card">
+                <div class="ui-card-img">
+                  <a href="#" class="ui-card-source">
+                    <img class="img" src="./images/experience-slider-2.png" alt="alt">
+                  </a>
+                </div>
+
+                <div class="ui-card-txt">
+                  <a href="#" class="ui-card-title">Отчет о подготовке к финальным испытаниям камеры сгорания двигателя М8000-нтг после внесения изменений.</a>
+
+                  <a href="#" class="ui-card-link">Читать новость</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="ui-card">
+                <div class="ui-card-img">
+                  <a href="#" class="ui-card-source">
+                    <img class="img" src="./images/experience-slider-3.png" alt="alt">
+                  </a>
+                </div>
+
+                <div class="ui-card-txt">
+                  <a href="#" class="ui-card-title">Камера сгорания двигателя М8000-нтг успешно прошла финальные испытания.</a>
+
+                  <a href="#" class="ui-card-link">Читать новость</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="ui-card">
+                <div class="ui-card-img">
+                  <a href="#" class="ui-card-source">
+                    <img class="img" src="./images/experience-slider-4.png" alt="alt">
+                  </a>
+                </div>
+
+                <div class="ui-card-txt">
+                  <a href="#" class="ui-card-title">Отчет о подготовке к финальным испытаниям камеры сгорания двигателя М8000-нтг после внесения изменений.</a>
+
+                  <a href="#" class="ui-card-link">Читать новость</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="ui-card">
+                <div class="ui-card-img">
+                  <a href="#" class="ui-card-source">
+                    <img class="img" src="./images/experience-slider-5.png" alt="alt">
+                  </a>
+                </div>
+
+                <div class="ui-card-txt">
+                  <a href="#" class="ui-card-title">Годовой отчет для инвесторов</a>
+
+                  <a href="#" class="ui-card-link">Читать новость</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacts">
+        <div class="ui-title">контакты</div>
+
+        <div class="contacts-info-list flex">
+          <div class="contacts-info">
+            <div class="contacts-info-img">
+              <img src="./images/contact-info-1.svg" alt="alt">
+            </div>
+
+            г. Минск, ул. П. Глебки, д. 15А, <br> 3й этаж, оф. 1
+          </div>
+
+          <div class="contacts-info">
+            <div class="contacts-info-img">
+              <img src="./images/contact-info-2.svg" alt="alt">
+            </div>
+
+            <a href="#">+375 (29) 339-11-12,</a>
+            <a href="#">+375 (29) 330-11-12,</a> <br>
+            <a href="#">+375 (17) 379-01-44,</a>
+            <a href="#">+375 (740) 740-9-940 <span>(многоканальный)</span></a>
+          </div>
+
+          <div class="contacts-info">
+            <div class="contacts-info-img">
+              <img src="./images/contact-info-3.svg" alt="alt">
+            </div>
+
+            <a href="#">info@uavheli.by</a>
+          </div>
+        </div>
+
+        <div class="contacts-map">
+          <div id="map"></div>
+
+          <div class="contacts-form">
+            <form action="#" class="form-validate">
+              <div class="ui-fields">
+                <div class="ui-field">
+                  <input type="text" class="ui-input" id="name" name="name" placeholder="Имя">
+                </div>
+                <div class="ui-field">
+                  <input type="text" id="phone" name="phone" class="ui-input" placeholder="Телефон">
+                </div>
+                <div class="ui-field">
+                  <input type="text" id="email" name="email"  class="ui-input" placeholder="Email">
+                </div>
+              </div>
+
+              <div class="contacts-form-txt">
+                Нажимая на кнопку, вы соглашаетесь с <a href="#">Политикой обработки персональных данных</a>
+              </div>
+
+              <button class="ui-btn">Отправить</button>
+            </form>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                jQuery(document).ready(function ($) {
+                  $(".form-validate").validate({
+                    errorElement: "span",
+
+                    rules: {
+                      name: {
+                        required: true,
+                        lettersonly: true,
+                      },
+                      phone: {
+                        required: true,
+                        phone: true,
+                      },
+                      email: {
+                        required: true,
+                        email: true,
+                      },
+                    },
+
+                    messages: {
+                      email: 'Введите корректный email',
+                    },
+
+                    // errorPlacement: function (error, element) {
+                    //   if (element.hasClass('ui-checkbox-input')) {
+                    //     element.closest('.ui-checkbox').append(error);
+                    //   }
+                    //   if (element.hasClass('ui-input')) {
+                    //     element.closest('.ui-field').append(error);
+                    //   }
+                    // },
+
+                    // submitHandler: function (form) {
+                    //   const input = document.getElementById('phone')
+                    //   console.log(input.value)
+                    //   showPopup()
+                    // },
+                  });
+                })
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--#include file="inc-footer.html"-->
