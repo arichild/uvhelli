@@ -9,24 +9,25 @@
     }
 
     .splide__arrows.splide__arrows--ltr {
-      max-width: 140px;
-      flex: 0 0 140px;
+      top: -4px;
+      right: 0;
+      position: absolute;
     }
 
     .splide__pagination {
       position: static;
-      max-width: calc(100% - 140px);
-      flex: 0 0 calc(100% - 140px);
+      max-width: 100%;
+      flex: 100%;
     }
 
-    .splide__arrows.splide__arrows--ltr {
-      top: 0;
+    .splide-controls {
+      justify-content: center;
     }
   }
 
   &-block {
     position: relative;
-    padding-bottom: 145px;
+    padding-bottom: 125px;
     margin-bottom: 130px;
 
     &-content {

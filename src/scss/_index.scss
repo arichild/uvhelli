@@ -1,5 +1,6 @@
 .info {
   margin-bottom: 160px;
+  border: 1px solid #7b7b7b;
 
   &-main {
     max-width: 684px;
@@ -7,7 +8,10 @@
     background-color: #fff;
     color: #121212;
     padding: 66px 44px 68px 54px;
-    border: 1px solid #7B7B7B;
+    border-right: 1px solid #7B7B7B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     &-img {
       line-height: 0;
@@ -45,20 +49,49 @@
     flex-wrap: wrap;
     max-width: calc(100% - 684px);
     flex: 0 0 calc(100% - 684px);
+    // border: 1px solid #7B7B7B;
+    overflow: hidden;
+
+    // &::before {
+    //   content: '';
+    //   width: 100%;
+    //   height: 1px;
+    //   background: #7B7B7B;
+    //   position: absolute;
+    //   left: 0;
+    //   top: 50%;
+    //   transform: translate(0, -50%);
+    // }
+
+    // &::after {
+    //   content: '';
+    //   width: 1px;
+    //   height: 100%;
+    //   background: #7B7B7B;
+    //   position: absolute;
+    //   left: 50%;
+    //   top: 0;
+    //   transform: translate(-50%, 0);
+    // }
   }
 
   &-secondary {
     max-width: 50%;
     flex: 0 0 50%;
     padding: 32px 82px 35px 51px;
-    border: 1px solid #7B7B7B;
+    // border: 1px solid #7B7B7B;
     color: #D8D8D8;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-left: 1px solid #7B7B7B;
+    border-bottom: 1px solid #7B7B7B;
+    margin-left: calc(-1 * var(--bordersize));
+    margin-bottom: calc(-1 * var(--bordersize));
 
     &-img {
       line-height: 0;
+      margin-bottom: 12px;
       // margin-bottom: 56px;
 
       img {
@@ -114,6 +147,20 @@
     &-img {
       line-height: 0;
       margin-bottom: 45px;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      aspect-ratio: 1.5556;
+
+      .img {
+        object-fit: contain;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &-title {
@@ -206,6 +253,17 @@
   &-img {
     line-height: 0;
     position: relative;
+    overflow: hidden;
+
+    img {
+      transition: transform .3s ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+    }
 
     &::before {
       content: '';
@@ -213,6 +271,7 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.6));
+      z-index: 9999;
     }
   }
 }
@@ -302,4 +361,15 @@
       }
     }
   }
+}
+
+.video {
+  &-block {
+    height: 960px;
+    background-color: #7B7B7B;
+  }
+}
+
+:root{
+  --bordersize: 1px;
 }

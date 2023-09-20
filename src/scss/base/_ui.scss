@@ -28,9 +28,14 @@
         transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
+        transition: transform .3s ease;
       }
 
       &:hover {
+        .img {
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+
         .ui-card-play {
           background-color: #fff;
         }
@@ -167,7 +172,7 @@
 
       &::after {
         content: '';
-        background-image: url('../../images/icon/ui-arrow.svg');
+        background-image: url('../images/icon/ui-arrow.svg');
         background-repeat: no-repeat;
         background-size: 100%;
         width: 32px;
@@ -177,6 +182,99 @@
         top: 50%;
         transform: translate(0, -50%);
       }
+    }
+  }
+
+  &-news {
+    position: relative;
+
+    &-img {
+      line-height: 0;
+      margin-bottom: 40px;
+      display: block;
+      aspect-ratio: 1.019;
+      position: relative;
+      overflow: hidden;
+
+
+      .img {
+        object-fit: contain;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        transition: transform .3s ease;
+      }
+
+      &:hover {
+        .img {
+          transform: translate(-50%, -50%) scale(1.05);
+        }
+      }
+    }
+
+    &-source {
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.38) 47.92%, rgba(0, 0, 0, 0.75) 100%);
+        z-index: 1;
+      }
+    }
+
+    &-title {
+      font-size: 24px;
+      text-decoration-line: underline;
+      margin-bottom: 35px;
+      padding-left: 24px;
+      border-left: 6px solid #D9D9D9;
+      line-height: 1.3;
+      text-underline-offset: 6px;
+      display: block;
+      transition: color .1s ease;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &-link {
+      padding-left: 24px;
+      position: relative;
+      display: inline-block;
+      color: #D9D9D9;
+      transition: color .1s ease-in;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &::after {
+        content: '';
+        background-image: url('../images/icon/ui-arrow.svg');
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 32px;
+        height: 9px;
+        position: absolute;
+        right: -48px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+    }
+
+    &-txt {
+      color: #fff;
+      position: absolute;
+      bottom: 87px;
+      left: 40px;
+      z-index: 2;
+      padding-right: 40px;
+      max-height: calc(100% - 40px);
     }
   }
 
@@ -201,6 +299,7 @@
 
   &-txt {
     display: inline-block;
+    margin-right: 30px;
   }
 
   &-link {
@@ -227,6 +326,10 @@
     .ui-title {
       margin-bottom: 0;
     }
+
+    .splide__arrows.splide__arrows--ltr {
+      top: 25px;
+    }
   }
 
   &-input {
@@ -244,6 +347,30 @@
     &::placeholder {
       color: #D9D9D9;
       font-size: 20px;
+    }
+  }
+
+  &-select {
+    position: relative;
+
+    &::before {
+      content: '';
+      background-image: url('../images/select-arr.svg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 18px;
+      height: 18px;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      position: relative;
     }
   }
 
@@ -314,6 +441,7 @@ span.error {
 
 .ui-pagination {
   text-align: center;
+  margin-bottom: 20px;
 
   svg.sprite {
     display: block;
@@ -377,7 +505,7 @@ span.error {
   &-btn {
     display: inline-block;
     vertical-align: middle;
-    font-family: Gilroy;
+    font-family: Century-Gothic;
     width: 52px;
     height: 52px;
     margin-right: 8px;
@@ -493,18 +621,18 @@ span.error {
   border: none;
   text-align: left;
   cursor: pointer;
-  height: 132px;
-  line-height: 132px;
+  // height: 132px;
+  // line-height: 132px;
   background: #333;
   margin-bottom: 30px;
-  padding-left: 82px;
+  // padding-left: 82px;
   color: #D9D9D9;
-  font-family: Century-Gothic;
   font-size: 24px;
-  padding-right: 100px;
+  // padding-right: 100px;
   transition: color .1s ease-in;
+  padding: 56px 100px 52px 82px;
 
-  span {
+  &-headline {
     padding-left: 18px;
     border-left: 3px solid #D9D9D9;
     transition: border-color .1s ease-in;
@@ -531,7 +659,7 @@ span.error {
   &:hover {
     color: #E74B23;
 
-    span {
+    .ui-tablinks-headline {
       border-color: #E74B23;
     }
   }
@@ -559,8 +687,8 @@ span.error {
   &.active {
     svg {
       fill: #fff;
-      transform: rotate(-180deg);
-      top: 11px;
+      transform: translate(-50%, 0) rotate(-180deg);
+      top: 9px;
     }
 
     .ui-tab-icon {
@@ -576,7 +704,8 @@ span.error {
   border-radius: 50%;
   position: absolute;
   right: 50px;
-  top: 50px;
+  top: 50%;
+  transform: translate(0, -50%);
   pointer-events: none;
 
   &:hover {
@@ -589,14 +718,15 @@ span.error {
   }
 
   svg {
-    width: 28px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     position: absolute;
     right: 0;
     fill: #121212;
     transition: 0.3s transform;
-    top: 14px;
-    right: 5px;
+    top: 12px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     @media(max-width: 1024px) {
       width: 20px;
@@ -618,8 +748,10 @@ span.error {
     flex: 0 0 148px;
   }
 
-  &-txt {
+  &-column {
     margin-bottom: 48px;
+    max-width: calc(100% - 201px);
+    flex: 0 0 calc(100% - 201px);
 
     &:last-child {
       margin-bottom: 0;
@@ -627,9 +759,7 @@ span.error {
   }
 
   ul {
-    margin-bottom: 0;
-    max-width: calc(100% - 201px);
-    flex: 0 0 calc(100% - 201px);
+    margin-bottom: 20px;
   }
 
   @media(max-width: 1024px) {

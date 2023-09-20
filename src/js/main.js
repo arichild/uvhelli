@@ -34,7 +34,7 @@ if (document.getElementById('phone')) {
         placeholderChar: '_',
       },
       {
-        mask: '0000000000000',
+        mask: '+0000000000000',
         startsWith: '',
         country: 'unknown'
       }
@@ -120,7 +120,7 @@ if(tabs) {
 }
 
 AOS.init({
-  delay: 140,
+  delay: 180,
   duration: 1200,
 });
 
@@ -176,17 +176,27 @@ if(developmentGallery.length) {
 const exhibitionGallery = document.querySelector('#exhibitionGallery')
 
 if(exhibitionGallery) {
-  lightGallery(exhibitionGallery, {
-    selector: '.exhibition-photo',
-    download: false,
-    counter: false,
-    hideBarsDelay: 0,
-    controls: true,
-  });
+  if(exhibitionGallery) {
+    lightGallery(exhibitionGallery, {
+      selector: '.exhibition-photo',
+      download: false,
+      counter: false,
+      hideBarsDelay: 0,
+      controls: true,
+    });
+  }
 }
-
 
 Fancybox.bind('[data-fancybox="video"]', {
   trapFocus: true,
   Thumbs: false
 });
+
+const inputFile = document.querySelector('.ui-doc-file input[type=file]')
+
+if(inputFile) {
+  $('.ui-doc-file input[type=file]').on('change', function(){
+    let file = this.files[0];
+    $(this).next().html(file.name);
+  });
+}

@@ -5,6 +5,10 @@
   // top: 23px;
 }
 
+.splide__arrow:disabled {
+  cursor: auto;
+}
+
 .splide__arrow {
   position: static;
   transform: none;
