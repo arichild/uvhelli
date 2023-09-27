@@ -1,4 +1,4 @@
-.splide__arrows.splide__arrows--ltr {
+.splide__arrows {
   display: flex;
   align-items: center;
   position: relative;
@@ -16,7 +16,7 @@
 
 .splide__arrow {
   background: transparent;
-  width: 100%;
+  width: 59px;
   border-radius: 0%;
   // padding: 0 10px;
   opacity: 1;

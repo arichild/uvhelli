@@ -233,11 +233,18 @@
                   </div>
                   <div class="ui-field">
                     <div class="ui-select">
-                      <select id="select" name="select" class="wide ui-input">
+                      <select id="select" name="select" class="ui-input custom-select">
                         <option value="" disabled selected>Вакансия</option>
-                        <option value="1">Вакансия 1</option>
-                        <option value="2">Вакансия 2</option>
-                        <option value="3">Вакансия 3</option>
+                        <option value="1">Инженер-аэродинамик</option>
+                        <option value="2">Инженер по наладке РЭАиП</option>
+                        <option value="3">Инженер-схемотехник</option>
+                        <option value="4">Инженер-аэродинамик</option>
+                        <option value="5">Инженер по наладке РЭАиП</option>
+                        <option value="6">Инженер-аэродинамик</option>
+                        <option value="7">Инженер по наладке РЭАиП</option>
+                        <option value="8">Инженер-схемотехник</option>
+                        <option value="9">Инженер-аэродинамик</option>
+                        <option value="10">Инженер по наладке РЭАиП</option>
                       </select>
                     </div>
                   </div>
@@ -279,20 +286,15 @@
                         }
                       },
 
-                      // errorPlacement: function (error, element) {
-                      //   if (element.hasClass('ui-checkbox-input')) {
-                      //     element.closest('.ui-checkbox').append(error);
-                      //   }
-                      //   if (element.hasClass('ui-input')) {
-                      //     element.closest('.ui-field').append(error);
-                      //   }
-                      // },
+                      errorPlacement: function (error, element) {
+                        if (element.hasClass('ui-input')) {
+                          element.closest('.ui-field').append(error);
+                        }
+                      },
 
-                      // submitHandler: function (form) {
-                      //   const input = document.getElementById('phone')
-                      //   console.log(input.value)
-                      //   showPopup()
-                      // },
+                      submitHandler: function (form) {
+                        showPopup('./popup/success.html')
+                      },
                     });
                   })
                 });

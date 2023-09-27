@@ -471,6 +471,26 @@
         <div class="contacts-map">
           <div id="map"></div>
 
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              jQuery(document).ready(function ($) {
+                if(document.getElementById('map')) {
+                  ymaps.ready(init);
+
+                  function init(){
+                    var myMap = new ymaps.Map("map", {
+                        center: [53.917877, 27.471479],
+                        zoom: 16,
+                        controls: [],
+                    });
+
+                    myMap.behaviors.disable('scrollZoom');
+                  }
+                }
+              })
+            });
+          </script>
+
           <div class="contacts-form">
             <form action="#" class="form-validate">
               <div class="ui-fields">
@@ -526,11 +546,9 @@
                     //   }
                     // },
 
-                    // submitHandler: function (form) {
-                    //   const input = document.getElementById('phone')
-                    //   console.log(input.value)
-                    //   showPopup()
-                    // },
+                    submitHandler: function (form) {
+                      showPopup('./popup/success.html')
+                    },
                   });
                 })
               });
