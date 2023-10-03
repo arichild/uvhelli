@@ -1,6 +1,10 @@
 .footer {
   padding: 60px 0;
   border-top: 1px solid #292929;
+  background-color: #121212;
+  position: relative;
+  z-index: 1;
+
   &-content {
     justify-content: space-between;
     align-items: center;

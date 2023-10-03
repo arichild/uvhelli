@@ -55,7 +55,7 @@ body {
   background-color: #121212;
 }
 
-#wrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
   margin-left: auto;
@@ -64,11 +64,24 @@ body {
   overflow: hidden;
   min-height: 100%;
   min-width: 100%;
+
+  &.parallax {
+    padding-top: 100vh;
+  }
 }
 
-#middle {
+.middle {
   flex: 1 0 auto;
   -webkit-box-flex: 1;
+
+  &.parallax {
+    margin-top: 100vh;
+    position: relative;
+    z-index: 1;
+    background-color: #121212;
+    padding-top: 144px;
+    border-top: 2px solid #292929;
+  }
 }
 
 #footer {
