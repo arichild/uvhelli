@@ -4,7 +4,7 @@ const backgroundBlock = document.querySelector('.main-screen-block')
 const background = document.querySelector('.main-screen-bg')
 const sliderTxt = document.querySelector('.main-screen-txt')
 
-$( document ).ready(function() {
+$(document).ready(function() {
   // animation for development.html
   AOS.init({
     delay: 180,
@@ -71,17 +71,6 @@ $( document ).ready(function() {
     })
 
     slider.mount()
-
-    const arrows = document.querySelectorAll('.splide__arrows.test')
-
-    arrows.forEach(element => {
-      element.addEventListener('click', (e) => {
-        if(e.target.closest('.splide__arrow.arr-next')) {
-          console.log(slider.index)
-
-        }
-      })
-    });
   }
 
   // tabs
@@ -107,7 +96,24 @@ $( document ).ready(function() {
   }
 
   // anchor
-  blockTo()
+  const anchors = document.querySelectorAll('[data-anchor]')
+
+  if(anchors.length) {
+    for (let anchor of anchors) {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+
+        let id = e.target.dataset.anchor;
+
+        if(id) {
+          document.getElementById(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          })
+        }
+      })
+    }
+  }
 
   // input file
   const inputFile = document.querySelector('.ui-doc-file input[type=file]')
@@ -153,7 +159,7 @@ $( document ).ready(function() {
   }
 
   // gallery
-  const developmentGallery = document.querySelectorAll('.gallery')
+  const developmentGallery = document.querySelectorAll('[data-development]')
 
   if(developmentGallery.length) {
     developmentGallery.forEach(item => {
@@ -177,18 +183,18 @@ $( document ).ready(function() {
     })
   }
 
-  const exhibitionGallery = document.querySelector('.exhibitionGallery')
+  const exhibitionGallery = document.querySelectorAll('.exhibition-photos')
 
-  if(exhibitionGallery) {
-    if(exhibitionGallery) {
-      lightGallery(exhibitionGallery, {
-        selector: '.exhibition-photo',
+  if(exhibitionGallery.length) {
+    exhibitionGallery.forEach(element => {
+      lightGallery(element, {
+        selector: '[data-src]',
         download: false,
         counter: false,
         hideBarsDelay: 0,
         controls: true,
       });
-    }
+    });
   }
 
   // video gallery
@@ -197,10 +203,17 @@ $( document ).ready(function() {
     Thumbs: false
   });
 
+  // height for blocks for development.html
+  document.addEventListener("DOMContentLoaded", setHeightDevelopment)
   window.addEventListener('resize', setHeightDevelopment);
 
-  slider.addEventListener('input', mainScreen)
+  // range input
+  if(slider) {
+    slider.addEventListener('input', mainScreen)
+  }
 });
+
+$.validator.messages.required = 'Пожалуйста, введите данные';
 
 jQuery.validator.addMethod("lettersonly", function(value, element) {
   return this.optional(element) || /^([а-яё ]+|[a-z ]+)$/i.test(value);
@@ -216,15 +229,13 @@ jQuery.validator.addMethod("phone", function (value, element) {
   }
 }, "Введите полный номер");
 
-$.validator.messages.required = 'Пожалуйста, введите данные';
-
 $('select.custom-select').on('change', function() {
   setTimeout(function() {
     $('select.custom-select').trigger('refresh');
   }, 1)
 });
 
-if (document.getElementById('phone')) {
+if(document.getElementById('phone')) {
   let phone = document.getElementById('phone')
 
   let phoneMask = IMask(phone, {
@@ -281,29 +292,6 @@ function showPopup(path) {
   });
 }
 
-function blockTo() {
-  const anchors = document.querySelectorAll('.anchor')
-
-  if(anchors.length) {
-    for (let anchor of anchors) {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-
-        let id = e.target.dataset.anchor;
-
-        if(id) {
-          document.getElementById(id).scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-          })
-        }
-      })
-    }
-  }
-}
-
-document.addEventListener("DOMContentLoaded", setHeightDevelopment)
-
 function setHeightDevelopment() {
   const blockParent = document.querySelectorAll('.development-block')
 
@@ -343,33 +331,34 @@ function setHeightDevelopment() {
   }
 }
 
-// range input
 document.addEventListener("DOMContentLoaded", mainScreen)
 
 function mainScreen() {
-  let sliderPos = slider.value / (100 / window.innerWidth);
+  if(slider) {
+    let sliderPos = slider.value / (100 / window.innerWidth);
 
-  if(slider.value < 2) {
-    background.style.opacity = 0;
-    sliderTxt.style.opacity = 0;
+    if(slider.value < 2) {
+      background.style.opacity = 0;
+      sliderTxt.style.opacity = 0;
 
-    return
-  } else if(slider.value > 99) {
-    background.style.opacity = 1;
-    sliderTxt.style.opacity = 1;
-    backgroundBlock.style.width ='100%';
+      return
+    } else if(slider.value > 99) {
+      background.style.opacity = 1;
+      sliderTxt.style.opacity = 1;
+      backgroundBlock.style.width ='100%';
 
-    return
-  } else {
-    sliderTxt.style.opacity = 1;
+      return
+    } else {
+      sliderTxt.style.opacity = 1;
+    }
+
+    for (let i = 0; i < letters.length; i++) {
+      let letterPos = letters[i].getBoundingClientRect().left;
+
+      letters[i].style.opacity = letterPos <= sliderPos ? 1 : (slider.value / 100);
+    }
+
+    backgroundBlock.style.width = sliderPos + 'px';
+    background.style.opacity = (slider.value / 100);
   }
-
-  for (let i = 0; i < letters.length; i++) {
-    let letterPos = letters[i].getBoundingClientRect().left;
-
-    letters[i].style.opacity = letterPos <= sliderPos ? 1 : (slider.value / 100);
-  }
-
-  backgroundBlock.style.width = sliderPos + 'px';
-  background.style.opacity = (slider.value / 100);
 }
