@@ -390,10 +390,16 @@
                   <input type="text" class="ui-input" id="name" name="name" placeholder="Имя">
                 </div>
                 <div class="ui-field">
-                  <input type="text" id="phone" name="phone" class="ui-input" placeholder="Телефон">
+                  <input type="text" class="ui-input" id="company" name="company" placeholder="Компания">
+                </div>
+                <div class="ui-field">
+                  <input type="text" id="phone" name="phone" class="ui-input phone-mask" placeholder="Телефон">
                 </div>
                 <div class="ui-field">
                   <input type="text" id="email" name="email"  class="ui-input" placeholder="Email">
+                </div>
+                <div class="ui-field">
+                  <textarea id="msg" name="msg" class="ui-input" rows="3" placeholder="Сообщение"></textarea>
                 </div>
               </div>
 
@@ -414,6 +420,10 @@
                       name: {
                         required: true,
                         lettersonly: true,
+                      },
+                      company: {
+                        required: true,
+                        // lettersonly: true,
                       },
                       phone: {
                         required: true,

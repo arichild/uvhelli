@@ -17,11 +17,11 @@
 
     &-txt {
       display: inline-block;
+      font-size: 18px;
 
       a {
         display: inline-block;
         color: #fff;
-        font-size: 18px;
         margin-right: 174px;
         transition: color .1s ease-in;
 
@@ -33,8 +33,70 @@
 
     &-coopyright {
       display: inline-block;
-      font-size: 18px;
       text-transform: uppercase;
     }
+  }
+
+  @media(max-width: 1300.99px) {
+     &-content {
+      &-img {
+        margin-right: 30px;
+      }
+
+      &-txt {
+        font-size: 16px;
+
+        a {
+          margin-right: 60px;
+        }
+      }
+     }
+  }
+
+  @media(max-width: 1024.99px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    &-content {
+      flex-direction: column;
+
+      &-img {
+        margin-bottom: 40px;
+        margin-right: 0;
+      }
+
+      &-txt {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        a {
+          margin-right: 0;
+        }
+      }
+     }
+  }
+
+  @media(max-width: 768.99px) {
+    &-content {
+      &-img {
+        margin-bottom: 20px;
+      }
+
+      &-coopyright {
+        text-align: center;
+      }
+
+      &-txt {
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        // text-align: center;
+
+        a {
+          display: none;
+        }
+      }
+     }
   }
 }

@@ -22,6 +22,10 @@
 
     .splide-controls {
       justify-content: center;
+
+      &.hidden {
+        display: none;
+      }
     }
   }
 

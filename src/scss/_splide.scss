@@ -3,6 +3,12 @@
   align-items: center;
   position: relative;
   // top: 23px;
+
+  @media(min-width: 1024.99px) {
+     &.hidden {
+        display: none;
+     }
+  }
 }
 
 .splide__arrow:disabled {
@@ -83,3 +89,30 @@
 .splide-controls {
   position: relative;
 }
+
+@media(max-width: 1024.99px) {
+  .splide__list {
+    margin-bottom: 55px !important;
+  }
+}
+
+
+// .splide.ui-slider {
+//   padding-bottom: 65px;
+//   margin-bottom: 65px;
+
+//   @media(max-width: 1680.99px) {
+//     padding-bottom: 60px;
+//     margin-bottom: 54px;
+//   }
+
+//   @media(max-width: 1300.99px) {
+//     padding-bottom: 55px;
+//     margin-bottom: 49px;
+//   }
+
+//   @media(max-width: 1024.99px) {
+//      padding-bottom: 30px;
+//      margin-bottom: 30px;
+//   }
+// }

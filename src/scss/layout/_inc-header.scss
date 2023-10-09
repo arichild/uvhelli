@@ -1,18 +1,30 @@
 .header {
   padding: 56px 0 40px 0;
   border-bottom: 1px solid #262626;
-  margin-bottom: 92px;
+  // margin-bottom: 92px;
+  width: 100%;
+  background-color: #121212;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   &.main {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 10;
     border-bottom: none;
+    background-color: transparent;
+
+    &.sticky {
+      background-color: #121212;
+      border-bottom: 1px solid #262626;
+    }
 
     .header-content-img {
       display: none;
+
+      &.visible {
+        display: block;
+        opacity: 1;
+      }
     }
 
     &.active {
@@ -31,10 +43,6 @@
     }
   }
 
-  @media(max-width: 1024.99px) {
-     position: relative;
-  }
-
   a {
     transition: color .1s ease-in;
 
@@ -46,12 +54,18 @@
   &-content {
     color: #D9D9D9;
     align-items: center;
+    height: 56px;
 
     &-img {
       line-height: 0;
       max-width: 193px;
+      flex: 0 0 193px;
       width: 100%;
       margin-right: 107px;
+
+      &.active {
+        margin: 0 auto;
+      }
 
       @media(max-width: 1024.99px) {
         margin-right: 0;
@@ -60,17 +74,21 @@
 
     &-block {
       width: 100%;
+      position: relative;
+      top: -8px;
+      font-size: 18px;
+      text-transform: uppercase;
     }
 
     &-nav {
-      max-width: calc(100% - 350px);
-      flex: 0 0 calc(100% - 350px);
+      // max-width: calc(100% - 350px);
+      // flex: 0 0 calc(100% - 350px);
+      flex: 1 0 auto;
       margin-right: 50px;
-      text-transform: uppercase;
 
       a {
         color: #D9D9D9;
-        font-size: 18px;
+        // font-size: 18px;
         font-weight: 700;
 
         &.active {
@@ -98,26 +116,25 @@
 
     &-info {
       display: inline-block;
-      font-size: 18px;
+      // font-size: 18px;
       font-weight: 700;
-      text-transform: uppercase;
-      max-width: 300px;
-      flex: 0 0 300px;
+      // max-width: 300px;
+      // flex: 0 0 300px;
+      flex: 0 0 auto;
     }
 
     a.phone {
       display: inline-block;
       color: #D9D9D9;
-      font-size: 18px;
+      // font-size: 18px;
       margin-right: 57px;
       padding-left: 26px;
       position: relative;
 
       img {
         position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translate(0, -50%);
+        left: -1px;
+        top: 2px;
       }
     }
 
@@ -128,8 +145,10 @@
       flex: 0 0 48px;
       background: transparent;
       border-radius: 50%;
-      position: relative;
+      position: absolute;
       border: 1px solid #D8E5F1;
+      right: 20px;
+      top: 30px;
 
       &::after {
         content: '';
@@ -145,6 +164,7 @@
 
       &.active {
         border: none;
+        top: 20px;
 
         &::after {
           background-image: url('../images/burger-close.svg');
@@ -171,9 +191,15 @@
           background: #121212;
           z-index: 10;
           border-top: 1px solid #333;
+          height: calc(100vh - 121px);
+          height: calc(var(--vh, 1vh) * 100 - 121px);
+          overflow-y: auto;
+          overflow-x: hidden;
 
           &.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+
           }
        }
 
@@ -210,7 +236,7 @@
        }
 
        &-burger {
-        display: block;
+          display: block;
        }
     }
 
@@ -276,4 +302,72 @@
     }
   }
 
+  @media(max-width: 1680.99px) {
+    &-content {
+      &-img {
+        margin-right: 75px;
+      }
+
+      // a.phone {
+      //   margin-right: 42px;
+      // }
+    }
+  }
+
+  @media(max-width: 1300.99px) {
+    &-content {
+      &-img {
+        margin-right: 40px;
+      }
+
+      &-nav {
+        margin-right: 30px;
+      }
+
+      a.phone {
+        font-size: 0;
+        width: 20px;
+        height: 20px;
+        padding-left: 0;
+        margin-right: 18px;
+        left: 0;
+
+        img {
+          position: relative;
+        }
+      }
+    }
+  }
+
+  @media(max-width: 1024.99px) {
+    padding: 32px 0;
+    // position: relative;
+
+    &-content {
+      &-img {
+        margin-right: 0;
+      }
+
+      &-nav {
+        margin-right: 0;
+      }
+
+      a.phone {
+        padding-left: 26px;
+        font-size: 18px;
+        width: auto;
+        height: auto;
+        margin-right: 0;
+
+        img {
+          position: absolute;
+          left: -1px;
+        }
+      }
+    }
+  }
+}
+
+.middle {
+  padding-top: 246px;
 }

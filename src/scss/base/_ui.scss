@@ -1,5 +1,17 @@
 .page-wrapper {
   margin-bottom: 120px;
+
+  @media(max-width: 1024.99px) {
+     margin-bottom: 90px;
+  }
+
+  @media(max-width: 768.99px) {
+     margin-bottom: 70px;
+  }
+
+  @media(max-width: 576.99px) {
+    margin-bottom: 60px;
+  }
 }
 
 .page-wrapper > :last-child {
@@ -186,7 +198,7 @@
       }
     }
 
-    @media(max-width: 1680px) {
+    @media(max-width: 1680.99px) {
       &-img {
         margin-bottom: 35px;
       }
@@ -196,7 +208,7 @@
       }
     }
 
-    @media(max-width: 1300px) {
+    @media(max-width: 1300.99px) {
       &-img {
         margin-bottom: 30px;
       }
@@ -206,7 +218,7 @@
       }
     }
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1170.99px) {
       &-img {
         margin-bottom: 25px;
       }
@@ -216,7 +228,7 @@
       }
     }
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1170.99px) {
       &-img {
         margin-bottom: 15px;
       }
@@ -345,6 +357,10 @@
       margin-bottom: 50px;
       text-transform: uppercase;
     }
+
+    .splide__arrows {
+      justify-content: center;
+    }
   }
 
   &-title {
@@ -357,30 +373,43 @@
     line-height: 1;
     margin-bottom: 55px;
 
-    @media(max-width: 1680px) {
+    @media(max-width: 1680.99px) {
       font-size: 90px;
       margin-bottom: 50px;
     }
 
-    @media(max-width: 1300px) {
+    @media(max-width: 1300.99px) {
       font-size: 75px;
       margin-bottom: 48px;
     }
 
-    @media(max-width: 1170px) {
-      font-size: 60px;
+    @media(max-width: 1170.99px) {
+      font-size: 65px;
       margin-bottom: 45px;
     }
 
     @media(max-width: 1024.99px) {
-      font-size: 42px;
+      font-size: 60px;
       margin-bottom: 40px;
+    }
+
+    @media(max-width: 768.99px) {
+       font-size: 55px;
+    }
+
+    @media(max-width: 576.99px) {
+       font-size: 42px;
     }
   }
 
   &-txt {
     display: inline-block;
     margin-right: 30px;
+
+    @media(max-width: 768.99px) {
+      width: 100%;
+      margin-right: 0;
+    }
   }
 
   &-link {
@@ -399,7 +428,7 @@
       text-underline-offset: 4px;
     }
 
-    @media(max-width: 1170px) {
+    @media(max-width: 1170.99px) {
        font-size: 16px;
     }
 
@@ -420,24 +449,20 @@
       top: 25px;
     }
 
-    @media(max-width: 1680px) {
-      margin-bottom: 50px;
-
+    @media(max-width: 1680.99px) {
       .ui-title {
         margin-right: 35px;
       }
     }
 
-    @media(max-width: 1300px) {
-      margin-bottom: 48px;
+    @media(max-width: 1300.99px) {
 
       .ui-title {
         margin-right: 30px;
       }
     }
 
-    @media(max-width: 1170px) {
-      margin-bottom: 45px;
+    @media(max-width: 1170.99px) {
 
       .ui-title {
         margin-right: 25px;
@@ -449,16 +474,32 @@
     }
 
     @media(max-width: 1024.99px) {
+      margin-bottom: 50px;
+
       .ui-title {
         margin-right: 20px;
+      }
+
+      .splide__arrows {
+        position: absolute;
+        bottom: 0;
+        align-items: flex-end;
+        left: 50%;
+        transform: translate(-50%, 0);
       }
     }
 
     @media(max-width: 768.99px) {
+      margin-bottom: 48px;
+
       .ui-title {
         width: 100%;
         margin-bottom: 6px;
       }
+    }
+
+    @media(max-width: 576.99px) {
+      margin-bottom: 45px;
     }
   }
 
@@ -473,6 +514,7 @@
     color: #D9D9D9;
     font-family: Century-Gothic;
     padding-left: 0;
+    border-radius: 0;
 
     &::placeholder {
       color: #D9D9D9;
@@ -487,6 +529,7 @@
 
   &-select {
     position: relative;
+    z-index: 1;
 
     &::before {
       content: '';
@@ -512,7 +555,7 @@
     margin-bottom: 50px;
 
     @media(max-width: 1024.99px) {
-       margin-bottom: 35px;
+       margin-bottom: 30px;
     }
   }
 
@@ -521,6 +564,10 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    @media(max-width: 1024.99px) {
+       margin-bottom: 35px;
     }
   }
 
@@ -604,7 +651,7 @@ span.error {
     display: inline-block;
     margin: 0 30px;
 
-    @media(max-width: 1024px) {
+    @media(max-width: 1024.99px) {
       text-align: center;
     }
   }
@@ -656,7 +703,7 @@ span.error {
     font-weight: 600;
     transition: .1s ease-out;
 
-    @media(max-width: 1024px) {
+    @media(max-width: 1024.99px) {
       width: 40px;
       height: 40px;
       line-height: 40px;
@@ -685,7 +732,7 @@ span.error {
     font-size: 16px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 480.99px) {
     &-arrow {
       margin-left: 0;
       margin-right: 0;
@@ -698,7 +745,7 @@ span.error {
       margin-right: 2px;
     }
   }
-  @media (max-width: 420px) {
+  @media (max-width: 420.99px) {
     &-arrow {
       width: 24px;
       height: 32px;
@@ -711,7 +758,7 @@ span.error {
       line-height: 32px;
     }
   }
-  @media (max-width: 360px) {
+  @media (max-width: 360.99px) {
     &-arrow {
       width: 32px;
       height: 32px;
@@ -747,10 +794,6 @@ span.error {
 
 .ui-tabcontent {
   display: none;
-
-  &.active {
-    display: block;
-  }
 }
 
 .ui-tablinks {
@@ -777,21 +820,17 @@ span.error {
     pointer-events: none;
   }
 
-  @media(max-width: 1024px) {
+  @media(max-width: 1024.99px) {
     font-size: 22px;
     margin-bottom: 24px;
   }
 
-  @media(max-width: 768px) {
+  @media(max-width: 768.99px) {
     font-size: 20px;
   }
 
-  @media(max-width: 576px) {
+  @media(max-width: 576.99px) {
     font-size: 18px;
-  }
-
-  &.active {
-    margin-bottom: 0;
   }
 
   &:hover {
@@ -813,7 +852,7 @@ span.error {
     right: 0;
     pointer-events: none;
 
-    @media(max-width: 1024px) {
+    @media(max-width: 1024.99px) {
       width: 20px;
     }
   }
@@ -831,6 +870,14 @@ span.error {
 
     .ui-tab-icon {
       background-color: #E74B23;
+    }
+
+    .ui-tablinks {
+      margin-bottom: 0;
+    }
+
+    .ui-tabcontent {
+      display: block;
     }
   }
 }
@@ -866,7 +913,7 @@ span.error {
     left: 50%;
     transform: translate(-50%, 0);
 
-    @media(max-width: 1024px) {
+    @media(max-width: 1024.99px) {
       width: 20px;
     }
   }
@@ -900,12 +947,12 @@ span.error {
     margin-bottom: 20px;
   }
 
-  @media(max-width: 1024px) {
+  @media(max-width: 1024.99px) {
     font-size: 18px;
     margin-bottom: 25px;
   }
 
-  @media(max-width: 768px) {
+  @media(max-width: 768.99px) {
     font-size: 16px;
   }
 
@@ -1089,4 +1136,11 @@ span.error {
 
 .jq-selectbox__dropdown ul::-webkit-scrollbar-thumb {
   background: #333;
+}
+
+textarea.ui-input {
+  height: auto;
+  white-space: normal;
+  resize: vertical;
+  display: block;
 }
