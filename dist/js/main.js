@@ -23,6 +23,9 @@ $(document).ready(function() {
   const achievementsEl = document.querySelector('.splide.achievementsSlider')
   const galleryEl = document.querySelector('.splide.gallerySlider')
   const experienceSlider = document.querySelector('.splide.experienceSlider')
+  const companyHistorySlider = document.querySelector('.splide.companyHistory')
+  const companyProductionSlider = document.querySelector('.splide.companyProduction')
+  const timelineSlider = document.querySelectorAll('.splide.timelineSlider')
 
   if(newsSliderEl) {
     const slider = new Splide('.splide.newsSlider', {
@@ -81,14 +84,21 @@ $(document).ready(function() {
     const slider = new Splide('.splide.gallerySlider', {
       perPage: 3,
       pagination: true,
-      gap: 30
+      gap: 30,
+
+      breakpoints: {
+        1024: { perPage: 2, gap: 30 },
+        599 : { perPage: 1, gap: 0 },
+      },
     })
 
-    let items = galleryEl.querySelectorAll('.splide__slide');
-    let controls = galleryEl.querySelector('.splide-controls');
+    if(window.innerWidth > 1024) {
+      let items = galleryEl.querySelectorAll('.splide__slide');
+      let controls = galleryEl.querySelector('.splide-controls');
 
-    if(items.length <= 3) {
-      controls.classList.add('hidden')
+      if(items.length <= 3) {
+        controls.classList.add('hidden')
+      }
     }
 
     slider.mount()
@@ -109,6 +119,79 @@ $(document).ready(function() {
     slider.mount()
   }
 
+  if(companyHistorySlider) {
+    const slider = new Splide('.splide.companyHistory', {
+      perPage: 1,
+      // padding: { right: 380 },
+      gap: 60,
+      pagination: false,
+
+      breakpoints: {
+        1024: { gap: 30 },
+        599 : { perPage: 1, gap: 0 },
+      },
+    })
+
+    slider.mount()
+  }
+
+  if(companyProductionSlider) {
+    const slider = new Splide('.splide.companyProduction', {
+      perPage: 3,
+      gap: 30,
+      pagination: false,
+
+      breakpoints: {
+        1024: { perPage: 2 },
+        599 : { perPage: 1, gap: 0 },
+      },
+    })
+
+    slider.mount()
+  }
+
+  if(timelineSlider) {
+
+    timelineSlider.forEach(element => {
+      if(window.innerWidth <= 1024) {
+        const slider = new Splide(element, {
+          perPage: 3,
+          gap: 30,
+          pagination: false,
+          autoHeight: true,
+
+          breakpoints: {
+            1024: { perPage: 2 },
+            599 : { perPage: 1, gap: 0 },
+          },
+        })
+
+        // slider.on('mounted ready dragged', () => {
+        //   const visibleEl = element.querySelectorAll('.is-visible')
+
+        //   let maxHeight = 0;
+
+        //   visibleEl.forEach(element => {
+        //     let height = element.offsetHeight;
+        //     console.log(height)
+
+        //     if (height > maxHeight) {
+        //       maxHeight = height;
+        //    }
+        //   });
+
+        //   console.log(maxHeight)
+        //   const list = element.querySelectorAll('.splide__list')
+
+        //   list.forEach(element => {
+        //     element.style.height = maxHeight + 'px'
+        //   });
+        // });
+        slider.mount()
+      }
+    });
+  }
+
   // tabs
   const tabs = document.querySelector('.ui-tab') || document.querySelector('.ui-tab-icon');
 
@@ -120,29 +203,53 @@ $(document).ready(function() {
     })
   }
 
+  function scrollTo(element) {
+    let offset = (element.getBoundingClientRect().top + window.pageYOffset) - document.querySelector('.header').clientHeight
+
+    if(element.dataset.aos) {
+      offset = offset - 100
+    }
+
+    window.scrollTo({
+      behavior: 'smooth',
+      top: offset
+    })
+  }
+
   // anchor
   const anchors = document.querySelectorAll('[data-anchor]')
 
   for (let anchor of anchors) {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault()
-
       let id = e.target.dataset.anchor;
+      const block = document.getElementById(id)
 
-      if(id && document.getElementById(id)) {
-        let offset = (document.getElementById(id).getBoundingClientRect().top + window.pageYOffset) - document.querySelector('.header').clientHeight
+      if(id && block) {
+        e.preventDefault()
+        closeBurger()
 
-        if(document.getElementById(id).dataset.aos) {
-          offset = offset - 100
-        }
-
-        window.scrollTo({
-          behavior: 'smooth',
-          top: offset
-        })
+        scrollTo(block)
       }
     })
   }
+
+  // contacts
+  function anchorLink() {
+    const hash = window.location.hash
+
+    if(!hash) return
+
+    const el = hash.substring(1)
+    const block = document.getElementById(el)
+
+    if(!block) return
+
+    scrollTo(block)
+  }
+
+  $(window).on('load', function() {
+    anchorLink()
+  })
 
   // input file
   const inputFile = $('.input-file')
@@ -198,6 +305,19 @@ $(document).ready(function() {
       logo.classList.toggle('active')
       body.classList.toggle('active')
     })
+  }
+
+  function closeBurger() {
+    const menuBurger = document.querySelector('.header-content-block')
+    const header = document.querySelector('.header')
+    const logo = document.querySelector('.header-content-img')
+    const body = document.body
+
+    burger.classList.remove('active')
+    menuBurger.classList.remove('active')
+    header.classList.remove('active')
+    logo.classList.remove('active')
+    body.classList.remove('active')
   }
 
   // gallery
@@ -297,6 +417,74 @@ $(document).ready(function() {
       }
     }
   }
+
+  // preloader
+  function setCookie(name, value, exp_y, exp_m, exp_d, path, domain, secure) {
+    let cookie_string = name + "=" + escape(value);
+
+    if (exp_y)
+    {
+      let expires = new Date(exp_y, exp_m, exp_d);
+      cookie_string += "; expires=" + expires.toGMTString();
+    }
+
+    if (path)
+      cookie_string += "; path=" + escape(path);
+
+    if (domain)
+      cookie_string += "; domain=" + escape(domain);
+
+    if (secure)
+      cookie_string += "; secure";
+
+    document.cookie = cookie_string;
+  }
+
+  function getCookie(cookie_name) {
+    let results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+
+    if (results)
+      return (unescape(results[2]));
+    else
+      return null;
+  }
+
+  const preloader = document.querySelector('.preloader');
+
+  const endPreloader = () => {
+    if(preloader) {
+      clearTimeout(preload_timeout);
+      window.removeEventListener('load', endPreloader);
+
+      const logo = preloader.querySelector('.preloader__logo');
+
+      logo.classList.add('-active');
+
+      setTimeout(() => {
+          preloader.classList.remove('-active');
+      }, 6500);
+
+      setTimeout(() => {
+        preloader.remove();
+      }, 7000);
+    }
+  };
+
+  let preloader_cookie = getCookie('preloader');
+
+  if (preloader_cookie === null) {
+    setCookie('preloader', true);
+    preload_timeout = setTimeout(endPreloader, 5800);
+    window.addEventListener('load', endPreloader);
+  } else if(preloader){
+    window.addEventListener('load', function() {
+      preloader.remove()
+    });
+  }
+
+  // line height in company.html
+  circleTop()
+  window.addEventListener('resize', circleTop)
 });
 
 $.validator.messages.required = 'Пожалуйста, введите данные';
@@ -381,42 +569,40 @@ function showPopup(path) {
 }
 
 function setHeightDevelopment() {
-  const blockParent = document.querySelectorAll('.development-block')
+  if(window.innerWidth > 1024) {
+    const blockParent = document.querySelectorAll('.development-block')
 
-  if(!blockParent.length) return
+    if(!blockParent.length) return
 
-  blockParent.forEach(item => {
-    const blockInfo = item.querySelector('.development-block-info')
+    blockParent.forEach(item => {
+      const blockInfo = item.querySelector('.development-block-info')
 
-    const parentHeight = item.offsetHeight
-    const blockInfoBottomHeight = item.querySelector('.development-block-bottom').offsetHeight
-    const title = item.querySelector('.development-block-title')
-    const titleHeight = item.querySelector('.development-block-title').offsetHeight
-    const imgBlock = item.querySelector('.development-block-img')
-    const imgBlockHeight = imgBlock.offsetHeight
+      const blockInfoBottom = item.querySelector('.development-block-bottom')
+      const blockInfoBottomHeight = blockInfoBottom.offsetHeight
 
-    const paddingTop = +window.getComputedStyle(item).paddingTop.split('px')[0]
-    const paddingBottom = +window.getComputedStyle(item).paddingBottom.split('px')[0]
+      const parentHeight = item.offsetHeight
+      const title = item.querySelector('.development-block-title')
+      const titleHeight = item.querySelector('.development-block-title').offsetHeight
+      const imgBlock = item.querySelector('.development-block-img')
+      // const imgBlockHeight = imgBlock.offsetHeight
 
-    const marginBottom = +window.getComputedStyle(blockInfo).marginBottom.split('px')[0]
-    const marginTop = +window.getComputedStyle(blockInfo).marginTop.split('px')[0]
+      const paddingTop = +window.getComputedStyle(item).paddingTop.split('px')[0]
+      const paddingBottom = +window.getComputedStyle(item).paddingBottom.split('px')[0]
 
-    const titleMarginBottom = +window.getComputedStyle(title).marginBottom.split('px')[0]
+      const marginBottom = +window.getComputedStyle(blockInfo).marginBottom.split('px')[0]
+      const marginTop = +window.getComputedStyle(blockInfo).marginTop.split('px')[0]
 
-    const imgBlockMarginBottom = +window.getComputedStyle(imgBlock).marginBottom.split('px')[0]
+      const titleMarginBottom = +window.getComputedStyle(title).marginBottom.split('px')[0]
 
-    const sumPadding = paddingTop + paddingBottom
-    const sumMargin = marginBottom + marginTop
+      // const imgBlockMarginBottom = +window.getComputedStyle(imgBlock).marginBottom.split('px')[0]
 
-    let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight)
-    blockInfo.style.height = sum  + 'px'
+      const sumPadding = paddingTop + paddingBottom
+      const sumMargin = marginBottom + marginTop
 
-    if(window.innerWidth <= 1024) {
-      sum = sum - imgBlockHeight - imgBlockMarginBottom
-
+      let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight)
       blockInfo.style.height = sum  + 'px'
-    }
-  });
+    });
+  }
 }
 
 // header sticky
@@ -435,4 +621,24 @@ function headerSticky() {
       logo.classList.remove("visible");
     }
   }
+}
+
+function circleTop() {
+  const block = document.querySelectorAll('.company-timeline-slider')
+
+  block.forEach(element => {
+    const offsetTopEl = element.getBoundingClientRect().top + window.pageYOffset
+    const titles = element.querySelectorAll('.company-timeline-title')
+
+    const offsetFirst = titles[0].getBoundingClientRect().bottom + window.pageYOffset
+    const offsetLast = titles[titles.length - 1].getBoundingClientRect().bottom + window.pageYOffset
+
+    const top = offsetFirst - offsetTopEl
+    const height = offsetLast - offsetFirst
+
+    const line = element.querySelector('.company-timeline-line')
+
+    line.style.height = height + 'px'
+    line.style.top = top + 'px'
+  });
 }

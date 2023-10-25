@@ -122,3 +122,26 @@
     padding-bottom: 30px;
   }
 }
+
+.splide__slide {
+  height:  auto !important;
+}
+
+.splide__list {
+  align-items: flex-start !important;
+}
+
+// .splide__slide {
+//   transition: height 1s ease;
+// }
+
+// .splide {
+//   .splide__track {
+//       .splide__list {
+//           align-items: flex-start !important;
+//       }
+//   }
+// }
+// .splide__slide:not(.is-active) {
+//   height: 0 !important;
+// }

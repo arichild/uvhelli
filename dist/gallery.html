@@ -436,7 +436,7 @@
         </div>
       </div>
 
-      <div class="contacts">
+      <div class="contacts" id="contacts">
         <div class="ui-title">контакты</div>
 
         <div class="contacts-info-list flex">
@@ -484,7 +484,15 @@
                         controls: [],
                     });
 
+                    myPlacemark = new ymaps.Placemark([53.917877, 27.471479], {
+                        balloonContent: 'г. Минск, ул. П. Глебки, д. 15А, 3й этаж, оф. 1'
+                    }, {
+                        iconLayout: 'default#image',
+                        iconImageHref: 'images/baloon.png',
+                    }),
+
                     myMap.behaviors.disable('scrollZoom');
+                    myMap.geoObjects.add(myPlacemark)
                   }
                 }
               })

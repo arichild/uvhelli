@@ -18,4 +18,36 @@
       text-decoration-thickness: 1px;
     }
   }
+
+  @media(max-width: 1024.99px) {
+    &-img {
+      max-width: 600px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
+  }
+
+  @media(max-width: 768.99px) {
+    &-img {
+      max-width: 530px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+    }
+
+    &-txt {
+      font-size: 18px;
+    }
+  }
+
+  @media(max-width: 576.99px) {
+    &-img {
+      max-width: 500px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    &-txt {
+      font-size: 16px;
+    }
+  }
 }

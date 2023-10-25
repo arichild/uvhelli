@@ -1,11 +1,31 @@
 .news-page {
   &-content {
-    margin-bottom: 110px;
+    // margin-bottom: 110px;
     padding-bottom: 90px;
     position: relative;
 
+    @media(max-width: 1024.99px) {
+      padding-bottom: 50px;
+
+       .order {
+        order: -1;
+       }
+    }
+
+    @media(max-width: 768.99px) {
+       padding-bottom: 40px;
+    }
+
+    @media(max-width: 576.99px) {
+       padding-bottom: 30px;
+    }
+
     .ui-card {
       margin-bottom: 90px;
+
+      @media(max-width: 1024.99px) {
+         margin-bottom: 30px;
+      }
     }
   }
 }
