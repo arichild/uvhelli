@@ -131,9 +131,9 @@
   align-items: flex-start !important;
 }
 
-// .splide__slide {
-//   transition: height 1s ease;
-// }
+.splide__list {
+  transition: transform 400ms cubic-bezier(0.25, 1, 0.5, 1) 0s, height .5s ease !important;
+}
 
 // .splide {
 //   .splide__track {

@@ -415,7 +415,7 @@
     }
 
     @media(max-width: 1024.99px) {
-       height: 350px;
+      //  height: 350px;
        margin-bottom: 30px;
 
        &-img {
@@ -746,7 +746,36 @@ span.error {
 
 .ui-pagination {
   text-align: center;
-  margin-bottom: 20px;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  position: relative;
+
+  @media(max-width: 1024.99px) {
+     padding-top: 40px;
+     padding-bottom: 40px;
+  }
+
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: -100%;
+  //   right: -100%;
+  //   top: 0;
+  //   height: 1px;
+  //   background-color: #292929;
+  //   z-index: 0;
+  // }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    right: -100%;
+    bottom: 0;
+    height: 1px;
+    background-color: #292929;
+    z-index: 0;
+  }
 
   svg.sprite {
     display: block;

@@ -27,6 +27,24 @@ $(document).ready(function() {
   const companyProductionSlider = document.querySelector('.splide.companyProduction')
   const timelineSlider = document.querySelectorAll('.splide.timelineSlider')
 
+  function heightAuto(element) {
+    setTimeout(() => {
+      const visibleEl = element.querySelectorAll('.is-visible')
+      let heights = []
+
+      visibleEl.forEach(el => {
+        let height = el.offsetHeight
+
+        heights.push(height)
+      });
+
+      const maxHeight = Math.max(...heights)
+      const list = element.querySelector('.splide__list')
+
+      list.style.height = maxHeight + 'px'
+    }, 1);
+  }
+
   if(newsSliderEl) {
     const slider = new Splide('.splide.newsSlider', {
       perPage: 3,
@@ -39,6 +57,9 @@ $(document).ready(function() {
       },
     })
 
+    slider.on('mounted moved', () => {
+      heightAuto(newsSliderEl)
+    });
     slider.mount()
   }
 
@@ -61,6 +82,9 @@ $(document).ready(function() {
       controls.classList.add('hidden')
     }
 
+    slider.on('mounted moved', () => {
+      heightAuto(moreSliderEl)
+    });
     slider.mount()
   }
 
@@ -101,6 +125,9 @@ $(document).ready(function() {
       }
     }
 
+    slider.on('mounted moved', () => {
+      heightAuto(galleryEl)
+    });
     slider.mount()
   }
 
@@ -116,6 +143,9 @@ $(document).ready(function() {
       },
     })
 
+    slider.on('mounted moved', () => {
+      heightAuto(experienceSlider)
+    });
     slider.mount()
   }
 
@@ -151,7 +181,6 @@ $(document).ready(function() {
   }
 
   if(timelineSlider) {
-
     timelineSlider.forEach(element => {
       if(window.innerWidth <= 1024) {
         const slider = new Splide(element, {
@@ -166,27 +195,11 @@ $(document).ready(function() {
           },
         })
 
-        // slider.on('mounted ready dragged', () => {
-        //   const visibleEl = element.querySelectorAll('.is-visible')
 
-        //   let maxHeight = 0;
 
-        //   visibleEl.forEach(element => {
-        //     let height = element.offsetHeight;
-        //     console.log(height)
-
-        //     if (height > maxHeight) {
-        //       maxHeight = height;
-        //    }
-        //   });
-
-        //   console.log(maxHeight)
-        //   const list = element.querySelectorAll('.splide__list')
-
-        //   list.forEach(element => {
-        //     element.style.height = maxHeight + 'px'
-        //   });
-        // });
+        slider.on('mounted moved', () => {
+          heightAuto(element)
+        });
         slider.mount()
       }
     });
@@ -418,73 +431,11 @@ $(document).ready(function() {
     }
   }
 
-  // preloader
-  function setCookie(name, value, exp_y, exp_m, exp_d, path, domain, secure) {
-    let cookie_string = name + "=" + escape(value);
-
-    if (exp_y)
-    {
-      let expires = new Date(exp_y, exp_m, exp_d);
-      cookie_string += "; expires=" + expires.toGMTString();
-    }
-
-    if (path)
-      cookie_string += "; path=" + escape(path);
-
-    if (domain)
-      cookie_string += "; domain=" + escape(domain);
-
-    if (secure)
-      cookie_string += "; secure";
-
-    document.cookie = cookie_string;
-  }
-
-  function getCookie(cookie_name) {
-    let results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
-
-    if (results)
-      return (unescape(results[2]));
-    else
-      return null;
-  }
-
-  const preloader = document.querySelector('.preloader');
-
-  const endPreloader = () => {
-    if(preloader) {
-      clearTimeout(preload_timeout);
-      window.removeEventListener('load', endPreloader);
-
-      const logo = preloader.querySelector('.preloader__logo');
-
-      logo.classList.add('-active');
-
-      setTimeout(() => {
-          preloader.classList.remove('-active');
-      }, 6500);
-
-      setTimeout(() => {
-        preloader.remove();
-      }, 7000);
-    }
-  };
-
-  let preloader_cookie = getCookie('preloader');
-
-  if (preloader_cookie === null) {
-    setCookie('preloader', true);
-    preload_timeout = setTimeout(endPreloader, 5800);
-    window.addEventListener('load', endPreloader);
-  } else if(preloader){
-    window.addEventListener('load', function() {
-      preloader.remove()
-    });
-  }
-
   // line height in company.html
-  circleTop()
-  window.addEventListener('resize', circleTop)
+  $(window).on('load', function() {
+    lineHeight()
+  })
+  window.addEventListener('resize', lineHeight)
 });
 
 $.validator.messages.required = 'Пожалуйста, введите данные';
@@ -594,12 +545,16 @@ function setHeightDevelopment() {
 
       const titleMarginBottom = +window.getComputedStyle(title).marginBottom.split('px')[0]
 
+      const blockTxt = document.querySelector('.development-block-txt')
+      const blockTxtBottom = +window.getComputedStyle(blockTxt).marginBottom.split('px')[0]
+
       // const imgBlockMarginBottom = +window.getComputedStyle(imgBlock).marginBottom.split('px')[0]
 
       const sumPadding = paddingTop + paddingBottom
       const sumMargin = marginBottom + marginTop
 
-      let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight)
+      let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight + blockTxtBottom)
+
       blockInfo.style.height = sum  + 'px'
     });
   }
@@ -623,7 +578,7 @@ function headerSticky() {
   }
 }
 
-function circleTop() {
+function lineHeight() {
   const block = document.querySelectorAll('.company-timeline-slider')
 
   block.forEach(element => {
