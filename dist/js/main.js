@@ -551,6 +551,13 @@ function setHeightDevelopment() {
         blockInfoBottomHeight = blockInfoBottom.offsetHeight
       }
 
+      const blockInfoTop = item.querySelector('.development-block-top')
+      let blockInfoTopHeight = 0;
+      if(blockInfoTop) {
+        const computedStyle = window.getComputedStyle(blockInfoTop);
+        blockInfoTopHeight = parseFloat(computedStyle.height) + parseFloat(computedStyle.marginTop) + parseFloat(computedStyle.marginBottom);
+      }      
+
       const parentHeight = item.offsetHeight
       const title = item.querySelector('.development-block-title')
       const titleHeight = item.querySelector('.development-block-title').offsetHeight
@@ -570,7 +577,7 @@ function setHeightDevelopment() {
       const sumPadding = paddingTop + paddingBottom
       const sumMargin = marginBottom + marginTop
 
-      let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight + blockTxtBottom)
+      let sum = parentHeight - (titleMarginBottom + titleHeight + sumPadding + sumMargin + blockInfoBottomHeight + blockInfoTopHeight + blockTxtBottom)
 
       blockInfo.style.height = sum  + 'px'
     });
