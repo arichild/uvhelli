@@ -63,6 +63,22 @@
       // }
     }
 
+    .splide__list {
+      margin-bottom: 40px !important;
+
+      @media(max-width: 1024.99px) {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .splide__arrows {
+      justify-content: center;
+
+      @media(max-width: 1024.99px) {
+        margin-bottom: 20px;
+      }
+    }
+
     &-info {
       overflow-y: auto;
       overflow-x: hidden;

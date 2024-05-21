@@ -26,6 +26,7 @@ $(document).ready(function() {
   const companyHistorySlider = document.querySelector('.splide.companyHistory')
   const companyProductionSlider = document.querySelector('.splide.companyProduction')
   const timelineSlider = document.querySelectorAll('.splide.timelineSlider')
+  const developmentSlider = document.querySelectorAll('.splide.developmentSlider')
 
   function heightAuto(element) {
     setTimeout(() => {
@@ -203,6 +204,22 @@ $(document).ready(function() {
         slider.mount()
       }
     });
+  }
+
+  if(developmentSlider.length) {
+    developmentSlider.forEach(element => {
+      const slider = new Splide(element, {
+        perPage: 1,
+        gap: 60,
+        pagination: false,
+  
+        breakpoints: {
+          1024: { gap: 30 },
+        },
+      })
+  
+      slider.mount()
+    })
   }
 
   // tabs
@@ -529,13 +546,15 @@ function setHeightDevelopment() {
       const blockInfo = item.querySelector('.development-block-info')
 
       const blockInfoBottom = item.querySelector('.development-block-bottom')
-      const blockInfoBottomHeight = blockInfoBottom.offsetHeight
+      let blockInfoBottomHeight = 0;
+      if(blockInfoBottom) {
+        blockInfoBottomHeight = blockInfoBottom.offsetHeight
+      }
 
       const parentHeight = item.offsetHeight
       const title = item.querySelector('.development-block-title')
       const titleHeight = item.querySelector('.development-block-title').offsetHeight
       const imgBlock = item.querySelector('.development-block-img')
-      // const imgBlockHeight = imgBlock.offsetHeight
 
       const paddingTop = +window.getComputedStyle(item).paddingTop.split('px')[0]
       const paddingBottom = +window.getComputedStyle(item).paddingBottom.split('px')[0]
@@ -548,8 +567,6 @@ function setHeightDevelopment() {
       const blockTxt = document.querySelector('.development-block-txt')
       const blockTxtBottom = +window.getComputedStyle(blockTxt).marginBottom.split('px')[0]
 
-      // const imgBlockMarginBottom = +window.getComputedStyle(imgBlock).marginBottom.split('px')[0]
-
       const sumPadding = paddingTop + paddingBottom
       const sumMargin = marginBottom + marginTop
 
@@ -559,6 +576,7 @@ function setHeightDevelopment() {
     });
   }
 }
+
 
 // header sticky
 function headerSticky() {
